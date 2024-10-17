@@ -1,4 +1,3 @@
-
 function showTime() {
     var date = new Date();
     var h = date.getHours();
@@ -20,8 +19,22 @@ function showTime() {
     s = (s < 10) ? "0" + s : s;
 
     var time = h + ":" + m + ":" + s + " " + session;
-    document.getElementById("MyClockDisplay").innerText = time;
+
+    // Adding Date, Month, and Year
+    var day = date.getDate();
+    var month = date.getMonth() + 1;  // Months are 0-based, so we add 1
+    var year = date.getFullYear();
+
+    // Formatting date and adding leading zero
+    day = (day < 10) ? "0" + day : day;
+    month = (month < 10) ? "0" + month : month;
+
+    var fullDate = day + "/" + month + "/" + year;
+
+    // Displaying Time and Date
+    document.getElementById("MyClockDisplay").innerText = time + " | " + fullDate;
     setTimeout(showTime, 1000);
 }
 
 showTime();
+
